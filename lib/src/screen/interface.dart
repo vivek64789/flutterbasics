@@ -30,6 +30,12 @@ class _InterfaceState extends State<Interface> {
                 child: Column(
                   children: [
                     TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                         labelText: 'Enter your name',
                       ),
@@ -57,13 +63,17 @@ class _InterfaceState extends State<Interface> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => StatelessInterface(
-                                      person: _person,
-                                    )),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => StatelessInterface(
+                          //             person: _person,
+                          //           )),
+                          // );
+
+                          Navigator.pushNamed(
+                              context, StatelessInterface.routeName,
+                              arguments: _person);
                         }
                       },
                       child: const Text('Submit Stateless'),
@@ -72,13 +82,16 @@ class _InterfaceState extends State<Interface> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  StatefulInterface(person: _person),
-                            ),
-                          );
+                          Navigator.pushNamed(
+                              context, StatefulInterface.routeName,
+                              arguments: _person);
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         StatefulInterface(person: _person),
+                          //   ),
+                          // );
                         }
                       },
                       child: const Text('Submit Stateful'),
@@ -89,4 +102,3 @@ class _InterfaceState extends State<Interface> {
             )));
   }
 }
-

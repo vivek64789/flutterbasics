@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:passing_data/src/screen/statefull_interface.dart';
-// import 'package:passing_data/src/screen/stateless_interface.dart';
+import 'package:passing_data/src/screen/statefull_interface.dart';
+import 'package:passing_data/src/screen/stateless_interface.dart';
 import './src/screen/interface.dart';
 
 void main() {
@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const Interface(),
-      // routes: {
-      //   StatelessInterface.routeName: (context) => const StatelessInterface(),
-      //   StatefulInterface.routeName: (context) =>const  StatefulInterface(),
-      // },
+      routes: {
+        StatelessInterface.routeName: (context) =>  StatelessInterface(),
+        StatefulInterface.routeName: (context) =>  StatefulInterface(),
+      },
     );
   }
 }

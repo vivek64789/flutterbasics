@@ -3,8 +3,7 @@ import '../model/Person.dart';
 
 class StatefulInterface extends StatefulWidget {
   static const String routeName = '/stateful_interface';
-  Person? person;
-  StatefulInterface({Key? key, this.person}) : super(key: key);
+  StatefulInterface({Key? key}) : super(key: key);
 
   @override
   _StatefulInterfaceState createState() => _StatefulInterfaceState();
@@ -13,6 +12,8 @@ class StatefulInterface extends StatefulWidget {
 class _StatefulInterfaceState extends State<StatefulInterface> {
   @override
   Widget build(BuildContext context) {
+    final person = ModalRoute.of(context)!.settings.arguments as Person;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Stateful Interface"),
@@ -20,10 +21,10 @@ class _StatefulInterfaceState extends State<StatefulInterface> {
       body: Center(
         child: Column(
           children: [
-            Text("${widget.person!.name}"),
-            Text("${widget.person!.age}"),
-            Text("${widget.person!.contact}"),
-            Text("${widget.person!.address}"),
+            Text("${person.name}"),
+            Text("${person.age}"),
+            Text("${person.contact}"),
+            Text("${person.address}"),
           ],
         ),
       ),
